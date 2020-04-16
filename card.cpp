@@ -17,7 +17,7 @@ Card::Card(int rank, Suit S){
 string Card::toString() const{
     string s;
     string suit;
-    s = rankString(myRank);
+    s = rankString();
     suit = suitString(mySuit);
     s.append(suit);
     return s;
@@ -40,7 +40,7 @@ string Card::suitString(Suit s) const{
     return suit;
 }
 
-string Card::rankString(int r) const{
+string Card::rankString() const{
     string s;
     if((1<myRank)&&(myRank<11)){
         stringstream ss;

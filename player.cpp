@@ -15,16 +15,33 @@ void Player::addCard(Card c) {
 void Player::bookCards(Card c1, Card c2) {
     myBook.push_back(c1);
     myBook.push_back(c2);
-    int place1=0;
-    int place2=0;
-    while (myHand.at(place1)!=c1){
-        place1++;
+    removeCardFromHand(c1);
+    removeCardFromHand(c2);
+}
+
+Card Player::chooseCardFromHand() const {
+    int size = myHand.size();
+    int num1 = (rand() % size);
+    return (myHand.at(num1));
+}
+
+Card Player::removeCardFromHand(Card c) {
+    int place = 0;
+    Card p;
+    while (myHand.at(place)!=c){
+        place++;
     }
-    myHand.erase(myHand.begin()+place1);
-    while (myHand.at(place1)!=c1){
-        place1++;
+    myHand.erase(myHand.begin()+place);
+    return c;
+}
+
+Card Player::findSameRank(Card c) const {
+    int place = 0;
+    while (myHand.at(place).getRank()!=c.getRank()){
+        place++;
     }
-    myHand.erase(myHand.begin()+place2);
+    return myHand.at(place);
+
 }
 
 int Player::getHandSize() const {
@@ -45,6 +62,20 @@ string Player::showHand() const {
     return s;
 }
 
+string Player::showBooks() const {
+    int size = myBook.size();
+    if(size==0){
+        cout << "no books";
+    }
+    string s;
+    for(int i=0;i<size;i+=2){
+        s.append(myBook.at(i).toString());
+        s.append(myBook.at(i+1).toString());
+        s.append(" ");
+    }
+    return s;
+}
+
 bool Player::checkHandForPair(Card &c1, Card &c2) {
     int size = myHand.size();
     for(int i=0;i<size;i++){
@@ -54,6 +85,16 @@ bool Player::checkHandForPair(Card &c1, Card &c2) {
                 c2=myHand.at(w);
                 return true;
             }
+        }
+    }
+    return false;
+}
+
+bool Player::sameRankInHand(Card c) const {
+    int size = myHand.size();
+    for(int i=0;i<size;i++){
+        if(c.getRank()==myHand.at(i).getRank()){
+            return true;
         }
     }
     return false;

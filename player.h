@@ -37,19 +37,23 @@ public:
     //this function will check a players hand for a pair.
     //If a pair is found, it returns true and populates the two variables with the cards tha make the pair.
 
-    bool checkHandForBook(Card &c1, Card &c2);
+    //bool checkHandForBook(Card &c1, Card &c2);
 
     //OPTIONAL
     // comment out if you decide to not use it
     //Does the player have a card with the same rank as c in her hand?
-    bool rankInHand(Card c) const;
+    //bool rankInHand(Card c) const;
 
     //uses some strategy to choose one card from the player's
     //hand so they can say "Do you have a 4?"
     Card chooseCardFromHand() const;
 
+
+    //returns card in hand that is the same rank as given card.
+    Card findSameRank(Card c) const;
+
     //Does the player have the card c in her hand?
-    bool cardInHand(Card c) const;
+    //bool cardInHand(Card c) const;
 
     //Remove the card c from the hand and return it to the caller
     Card removeCardFromHand(Card c);

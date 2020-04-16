@@ -44,7 +44,7 @@ public:
     int  getRank()                 const;  // return rank, 1..13
     string suitString(Suit s)      const;  // return "s", "h",...
 
-    string rankString(int r)       const;  // return "A", "2", ..."Q"
+    string rankString()       const;  // return "A", "2", ..."Q"
 
 
     bool operator == (const Card& rhs) const;
