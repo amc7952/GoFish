@@ -44,11 +44,15 @@ int main( )
     }
     cout << p2.getName() <<" has Hand: " << p2.showHand() << endl << "        Books: " << p2.showBooks() << endl << endl;
 
+    //Runs game. Game ends when all 26 books have been booked.
     while((p1.getBookSize()+p2.getBookSize())<26){
+        //Player 1s turn
+        //Both players need a card for a card to be asked for. Otherwise automatic "Go Fish"
         if((p1.getHandSize()>0)&&(p2.getHandSize()>0)) {
             c1 = p1.chooseCardFromHand();
             cout << "Joe asks - Do you have a " << c1.rankString() << endl;
             cout << "Jane says - ";
+            //Keep asking for more cards as long as player 2 had the card player 1 asked for.
             while (p2.sameRankInHand(c1)) {
                 cout << "Yes. I have a " << c1.rankString() << endl;
                 cout << "Joe takes the " << c1.toString() << endl;
@@ -88,11 +92,13 @@ int main( )
 
         cout << p1.getName() <<" has Hand: " << p1.showHand() << endl << "       Books: " << p1.showBooks() << endl << endl;
 
-        /////////////////////////////////////////////////
+        //Player 2s turn
+        //Both players need a card for a card to be asked for. Otherwise automatic "Go Fish"
         if((p1.getHandSize()>0)&&(p2.getHandSize()>0)) {
             c1 = p2.chooseCardFromHand();
             cout << "Jane asks - Do you have a " << c1.rankString() << endl;
             cout << "Joe says - ";
+            //Keep asking for more cards as long as player 1 had the card player 2 asked for.
             while (p1.sameRankInHand(c1)) {
                 cout << "Yes. I have a " << c1.rankString() << endl;
                 cout << "Jane takes the " << c1.toString() << endl;

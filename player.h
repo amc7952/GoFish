@@ -30,6 +30,9 @@ public:
     }
 
     void addCard(Card c);  //adds a card to the hand
+
+    //books two cards. Does not check if those two cards should be paired.
+    // Removes the cards from hand Pre-condition: Chosen cards actually exist in hand.
     void bookCards(Card c1, Card c2);
 
     //OPTIONAL
@@ -44,12 +47,11 @@ public:
     //Does the player have a card with the same rank as c in her hand?
     //bool rankInHand(Card c) const;
 
-    //uses some strategy to choose one card from the player's
-    //hand so they can say "Do you have a 4?"
+    //Randomly selects a card from the hand. Pre-condition: At least 1 card is in hand.
     Card chooseCardFromHand() const;
 
 
-    //returns card in hand that is the same rank as given card.
+    //returns card in hand that is the same rank as given card. Pre-condition: At least 1 card is in hand.
     Card findSameRank(Card c) const;
 
     //Does the player have the card c in her hand?

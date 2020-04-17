@@ -46,7 +46,7 @@ public:
 private:
 
     Card myCards[SIZE];
-    int myIndex;  // current card to deal
+    int myIndex;  // current card to deal, if myIndex==-1 deck is empty.
 };
 
 #endif
